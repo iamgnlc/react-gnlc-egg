@@ -1,0 +1,65 @@
+.gnlc-egg {
+  cursor: pointer;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.75vw;
+  color: #ccc;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background: #000;
+  background: -moz-radial-gradient(
+    center,
+    ellipse cover,
+    rgba(35, 35, 35, 1) 0%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  background: -webkit-radial-gradient(
+    center,
+    ellipse cover,
+    rgba(35, 35, 35, 1) 0%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  background: radial-gradient(
+    ellipse at center,
+    rgba(35, 35, 35, 1) 0%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#232323', endColorstr='#000000',GradientType=1 );
+}
+.gnlc-egg pre {
+  font-weight: 600;
+  margin: 1.5rem;
+  background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-animation: hue 5s infinite linear;
+}
+.gnlc-egg a {
+  transition: all 0.5s ease;
+  text-shadow: 1px 1px #000;
+  color: #ccc;
+  opacity: 0.35;
+  font-size: 95%;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+.gnlc-egg a:hover {
+  opacity: 1;
+}
+
+@keyframes hue {
+  from {
+    -webkit-filter: hue-rotate(0deg);
+  }
+  to {
+    -webkit-filter: hue-rotate(-360deg);
+  }
+}
