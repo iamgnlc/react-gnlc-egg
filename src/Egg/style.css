@@ -1,4 +1,5 @@
 .gnlc-egg {
+  z-index: 100000000;
   cursor: pointer;
   position: fixed;
   display: flex;
@@ -36,6 +37,8 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#232323', endColorstr='#000000',GradientType=1 );
 }
 .gnlc-egg pre {
+  line-height: 100%;
+  border: none;
   font-weight: 600;
   margin: 1.5rem;
   background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);

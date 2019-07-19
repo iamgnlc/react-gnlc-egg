@@ -6,25 +6,28 @@ import "animate.css"
 import logo from "./logo"
 import "./style.css"
 
+const uniq =
+  "zr448t7pdvbcfrr7c7qz4mtvqa2y05vepra48ac50uw7qqe6ofxhwrd3tvxwzxr5y569tv87uxvsgaost2d"
 const inClass = "flipInX"
 const outClass = "flipOutX"
 const repoUrl = "https://github.com/iamgnlc/"
 
-const Gnlc = React.memo((props) => {
-  function getOut(id) {
-    let element = document.getElementById(id)
+const Egg = React.memo(() => {
+  function getOut() {
+    let element = document.getElementById(`egg-${uniq}`)
 
     element.classList.remove(inClass)
     element.classList.add(outClass)
 
+    element = document.getElementById(`wrapper-${uniq}`)
     setTimeout(() => element.remove(), 1500)
   }
 
   return (
     <div
-      id={props.id}
+      id={`egg-${uniq}`}
       className={`gnlc-egg animated ${inClass}`}
-      onClick={() => getOut(props.id)}
+      onClick={() => getOut()}
     >
       <pre>{logo}</pre>
       <a href={repoUrl} target="_blank" rel="noopener noreferrer">
@@ -34,32 +37,27 @@ const Gnlc = React.memo((props) => {
   )
 })
 
-class Egg extends React.Component {
-  generateRandom = () => {
-    return (
-      Math.random()
-        .toString(36)
-        .substring(2, 15) +
-      Math.random()
-        .toString(36)
-        .substring(2, 15)
-    )
-  }
-
+class Wrapper extends React.Component {
   append = () => {
     let body = document.getElementsByTagName("body")[0]
-    const id = this.generateRandom()
     const div = document.createElement("div")
-    div.id = `egg-${id}`
+    div.id = `wrapper-${uniq}`
     body.appendChild(div)
-    ReactDOM.render(
-      <Gnlc id={`gnlc-${id}`} />,
-      document.getElementById(`egg-${id}`),
-    )
+    document.activeElement.blur()
+    ReactDOM.render(<Egg />, document.getElementById(`wrapper-${uniq}`))
+  }
+
+  remove = () => {
+    let element = document.getElementById(`wrapper-${uniq}`)
+    if (element) element.remove()
   }
 
   componentDidMount() {
     this.append()
+  }
+
+  componentWillUnmount() {
+    this.remove()
   }
 
   render() {
@@ -67,4 +65,4 @@ class Egg extends React.Component {
   }
 }
 
-export default Egg
+export default Wrapper
